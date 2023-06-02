@@ -75,15 +75,15 @@ app.get("/upload", (req, res) => {
   });
 });
 
-// app.post("/delete", (req, res) => {
-//   const sql = "DELETE FROM `posts` WHERE id = ?";
-//   db.query(sql, [req.body.postId], (err, data) => {
-//     if (err) {
-//       console.log(err);
-//     }
-//     return res.json(data);
-//   });
-// });
+app.post("/delete", (req, res) => {
+  const sql = "DELETE FROM `posts` WHERE id = ?";
+  db.query(sql, [req.body.postId], (err, data) => {
+    if (err) {
+      console.log(err);
+    }
+    return res.json(data);
+  });
+});
 
 // app.post("/user", (req, res) => {
 //   console.log(req.body);
