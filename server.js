@@ -49,31 +49,31 @@ app.post("/users/login", (req, res) => {
   });
 });
 
-// app.post("/upload", (req, res) => {
-//   const sql =
-//     "INSERT INTO `posts`( `title`, `description`, `username`) VALUES (?)";
-//   const values = [req.body.postName, req.body.postDesc, req.body.username];
+app.post("/upload", (req, res) => {
+  const sql =
+    "INSERT INTO `posts`( `title`, `description`, `username`) VALUES (?)";
+  const values = [req.body.postName, req.body.postDesc, req.body.username];
 
-//   db.query(sql, [values], (err, data) => {
-//     if (err) {
-//       console.log(err);
-//       return res.json(err);
-//     }
-//     if (data.length > 0) {
-//       return res.json(data);
-//     }
-//   });
-// });
+  db.query(sql, [values], (err, data) => {
+    if (err) {
+      console.log(err);
+      return res.json(err);
+    }
+    if (data.length > 0) {
+      return res.json(data);
+    }
+  });
+});
 
-// app.get("/upload", (req, res) => {
-//   const sql = "SELECT * FROM `posts`";
-//   db.query(sql, (err, data) => {
-//     if (err) {
-//       console.log(err);
-//     }
-//     return res.json(data);
-//   });
-// });
+app.get("/upload", (req, res) => {
+  const sql = "SELECT * FROM `posts`";
+  db.query(sql, (err, data) => {
+    if (err) {
+      console.log(err);
+    }
+    return res.json(data);
+  });
+});
 
 // app.post("/delete", (req, res) => {
 //   const sql = "DELETE FROM `posts` WHERE id = ?";
