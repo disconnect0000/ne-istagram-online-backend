@@ -13,27 +13,27 @@ const db = mysql.createConnection({
   password: "7nAcFeac7XmlFvMzrE88",
 });
 
-// app.post("/users/register", (req, res) => {
-//   const sql1 = "SELECT * FROM `users` WHERE `username` = (?)";
-//   db.query(sql1, [req.body.username], (err, data) => {
-//     if (err) {
-//       console.log(err);
-//     }
-//     if (data.length > 0) {
-//       return res.json("Taken");
-//     } else {
-//       const sql = "INSERT INTO users (`username`, `password`) VALUES (?)";
-//       const values = [req.body.username, req.body.password];
-//       db.query(sql, [values], (err, data) => {
-//         if (err) {
-//           return res.json(err);
-//         }
-//         return res.json(data);
-//         d;
-//       });
-//     }
-//   });
-// });
+app.post("/users/register", (req, res) => {
+  const sql1 = "SELECT * FROM `users` WHERE `username` = (?)";
+  db.query(sql1, [req.body.username], (err, data) => {
+    if (err) {
+      console.log(err);
+    }
+    if (data.length > 0) {
+      return res.json("Taken");
+    } else {
+      const sql = "INSERT INTO users (`username`, `password`) VALUES (?)";
+      const values = [req.body.username, req.body.password];
+      db.query(sql, [values], (err, data) => {
+        if (err) {
+          return res.json(err);
+        }
+        return res.json(data);
+        d;
+      });
+    }
+  });
+});
 
 app.post("/users/login", (req, res) => {
   const sql = "SELECT * FROM `users` WHERE `username` = ? AND `password` = ?";
