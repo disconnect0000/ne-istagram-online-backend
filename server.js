@@ -85,15 +85,15 @@ app.post("/delete", (req, res) => {
   });
 });
 
-// app.post("/user", (req, res) => {
-//   console.log(req.body);
-//   const sql = "SELECT * FROM posts WHERE username = ? ";
-//   db.query(sql, [req.body.username], (err, data) => {
-//     if (err) {
-//       console.log(console.log(err));
-//     }
-//     return res.json(data);
-//   });
-// });
+app.post("/user", (req, res) => {
+  console.log(req.body);
+  const sql = "SELECT * FROM posts WHERE username = ? ";
+  db.query(sql, [req.body.username], (err, data) => {
+    if (err) {
+      console.log(console.log(err));
+    }
+    return res.json(data);
+  });
+});
 
 app.listen(process.env.PORT || 5000);
