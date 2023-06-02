@@ -3,15 +3,14 @@ const mysql = require("mysql");
 const cors = require("cors");
 
 const app = express();
-
 app.use(cors());
 app.use(express.json());
 
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "littleSocialMedia",
+  database: "bes7cox8nko3uuqdwf4y",
+  user: "uhwggdygiilolkfe",
+  host: "bes7cox8nko3uuqdwf4y-mysql.services.clever-cloud.com",
+  password: "7nAcFeac7XmlFvMzrE88",
 });
 
 app.post("/users/register", (req, res) => {
@@ -37,18 +36,17 @@ app.post("/users/register", (req, res) => {
 });
 
 app.post("/users/login", (req, res) => {
-  const sql = "SELECT * FROM `users` WHERE `username` = ? AND `password` = ?";
-  db.query(sql, [req.body.username, req.body.password], (err, data) => {
-    if (err) {
-      console.log(err);
-    }
-
-    if (data.length > 0) {
-      return res.json("Succes");
-    } else {
-      return res.json("Failure");
-    }
-  });
+  // const sql = "SELECT * FROM `users` WHERE `username` = ? AND `password` = ?";
+  // db.query(sql, [req.body.username, req.body.password], (err, data) => {
+  //   if (err) {
+  //     console.log(err);
+  //   }
+  //   if (data.length > 0) {
+  //     return res.json("Succes");
+  //   } else {
+  //     return res.json("Failure");
+  //   }
+  // });
 });
 
 app.post("/upload", (req, res) => {
@@ -67,37 +65,35 @@ app.post("/upload", (req, res) => {
   });
 });
 
-app.get("/upload", (req, res) => {
-  const sql = "SELECT * FROM `posts`";
-  db.query(sql, (err, data) => {
-    if (err) {
-      console.log(err);
-    }
-    return res.json(data);
-  });
-});
+// app.get("/upload", (req, res) => {
+//   const sql = "SELECT * FROM `posts`";
+//   db.query(sql, (err, data) => {
+//     if (err) {
+//       console.log(err);
+//     }
+//     return res.json(data);
+//   });
+// });
 
-app.post("/delete", (req, res) => {
-  const sql = "DELETE FROM `posts` WHERE id = ?";
-  db.query(sql, [req.body.postId], (err, data) => {
-    if (err) {
-      console.log(err);
-    }
-    return res.json(data);
-  });
-});
+// app.post("/delete", (req, res) => {
+//   const sql = "DELETE FROM `posts` WHERE id = ?";
+//   db.query(sql, [req.body.postId], (err, data) => {
+//     if (err) {
+//       console.log(err);
+//     }
+//     return res.json(data);
+//   });
+// });
 
-app.post("/user", (req, res) => {
-  console.log(req.body);
-  const sql = "SELECT * FROM posts WHERE username = ? ";
-  db.query(sql, [req.body.username], (err, data) => {
-    if (err) {
-      console.log(console.log(err));
-    }
-    return res.json(data);
-  });
-});
+// app.post("/user", (req, res) => {
+//   console.log(req.body);
+//   const sql = "SELECT * FROM posts WHERE username = ? ";
+//   db.query(sql, [req.body.username], (err, data) => {
+//     if (err) {
+//       console.log(console.log(err));
+//     }
+//     return res.json(data);
+//   });
+// });
 
-app.listen(3001, (req, res) => {
-  console.log("listening");
-});
+app.listen(process.env.PORT || 5000);
